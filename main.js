@@ -108,6 +108,19 @@ document.body.onscroll = moveCamera
 moveCamera();
 
 
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize() {
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+
+
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
@@ -119,5 +132,7 @@ function animate() {
 
   renderer.render(scene,camera);
 }
+
+
 
 animate();
